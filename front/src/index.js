@@ -12,7 +12,7 @@ import { Provider } from 'react-redux';
 
 ReactDOM.render(
 	<React.StrictMode>
-		<Provider store={store.store}>
+		<Provider store={store}>
 			<BrowserRouter>
 				<Favicon url={favicon} />
 				<App />

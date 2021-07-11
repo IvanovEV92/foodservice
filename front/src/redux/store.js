@@ -1,8 +1,6 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
-import { contactReducer } from './contact';
+import { productReducer } from './product';
 import {
-	persistStore,
-	persistReducer,
 	FLUSH,
 	REHYDRATE,
 	PAUSE,
@@ -22,11 +20,9 @@ const middleware = [
 ];
 
 const store = configureStore({
-	reducer: contactReducer,
+	reducer: productReducer,
 	middleware,
 	devTools: process.env.NODE_ENV === 'development',
 });
 
-const persistor = persistStore(store);
-
-export default { store, persistor };
+export default store;
