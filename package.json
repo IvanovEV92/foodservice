@@ -1,0 +1,14 @@
+{
+	"name": "food-service",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"dev": "concurrently \"cd back && npm run dev\" \"cd front && npm start\" "
+	},
+	"author": "Evhenii <ivanov191192@gmail.com>",
+	"license": "ISC",
+	"dependencies": {
+		"concurrently": "^6.2.0"
+	}
+}
