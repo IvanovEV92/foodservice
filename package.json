@@ -9,6 +9,7 @@
 	"author": "Evhenii <ivanov191192@gmail.com>",
 	"license": "ISC",
 	"dependencies": {
-		"concurrently": "^6.2.0"
+		"concurrently": "^6.2.0",
+		"knex": "^0.95.7"
 	}
 }

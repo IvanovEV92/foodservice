@@ -6,11 +6,10 @@ export default function HomeView() {
 	const dispatch = useDispatch();
 
 	const products = useSelector(productSelectors.getProducts);
-	const changeProduct = useSelector(productSelectors.getChangeProduct);
-	console.log(changeProduct.productname);
+	const changeProductId = useSelector(productSelectors.getChangeProduct);
+	console.log(changeProductId);
+	const [productName, setProductName] = useState('');
 
-	const [productName, setProductName] = useState(changeProduct.productname);
-	console.log(productName);
 	const handleNameChange = useCallback(event => {
 		const { name, value } = event.currentTarget;
 		switch (name) {
@@ -35,20 +34,27 @@ export default function HomeView() {
 	return (
 		<ul>
 			{products.map(item => (
-				<li key={item.productid}>
-					<img src={item.url} width="200" alt={item.productname} />
-					<input
-						type="text"
-						name="name"
-						value={productName}
-						placeholder="Введите имя"
-						// pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-						title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
-						required
-						onChange={handleNameChange}
-					/>
-					<p>{item.productname}</p>
-					<button onClick={() => editProduct(item.productid)}>Edit</button>
+				<li key={item.id}>
+					<img src={item.product_image} width="200" alt={item.product_name} />
+					{changeProductId === item.id && (
+						<input
+							type="text"
+							name="name"
+							value={productName}
+							placeholder="Введите имя"
+							onChange={handleNameChange}
+						/>
+					)}
+
+					<p>{item.product_name}</p>
+					{changeProductId === item.id ? (
+						<div>
+							<button onClick={() => null}>Update</button>
+							<button onClick={() => null}>Delete</button>
+						</div>
+					) : (
+						<button onClick={() => editProduct(item.id)}>Edit</button>
+					)}
 				</li>
 			))}
 		</ul>
