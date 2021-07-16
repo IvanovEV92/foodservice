@@ -4,6 +4,7 @@ require('dotenv').config();
 
 const port = 3334;
 
-app.listen(port, () => {
-	console.log('erver running. Use our API on port:', port);
+const PORT = process.env.PORT || port;
+app.listen(PORT, () => {
+	console.log(`Our app is running on port ${PORT}`);
 });

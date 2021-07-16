@@ -1,7 +1,7 @@
 import axios from 'axios';
 import actions from './product-action';
 
-axios.defaults.baseURL = 'https://foodservice-iev-nodejs.herokuapp.com/';
+axios.defaults.baseURL = 'https://iev-foodservice.herokuapp.com/';
 
 const fetchProducts = () => async dispatch => {
 	dispatch(actions.fetchProductsRequest());
