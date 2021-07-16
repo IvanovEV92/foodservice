@@ -1,5 +1,6 @@
 const getProducts = state => state.items;
-const getChangeProduct = state => state.changeProduct.id;
+const getChangeProductId = state => state.changeProduct.id;
+const getChangeProductName = state => state.changeProduct.product_name;
 
 // eslint-disable-next-line
-export default { getProducts, getChangeProduct };
+export default { getProducts, getChangeProductId, getChangeProductName };

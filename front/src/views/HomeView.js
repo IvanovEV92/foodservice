@@ -6,7 +6,8 @@ export default function HomeView() {
 	const dispatch = useDispatch();
 
 	const products = useSelector(productSelectors.getProducts);
-	const changeProductId = useSelector(productSelectors.getChangeProduct);
+	const changeProductId = useSelector(productSelectors.getChangeProductId);
+
 	console.log(changeProductId);
 	const [productName, setProductName] = useState('');
 
