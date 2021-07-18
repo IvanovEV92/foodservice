@@ -17,7 +17,18 @@ const findProductById = async (req, res) => {
 	res.status(200).send(item);
 };
 
+const addProduct = async (req, res) => {
+	const { name, image, description, price } = req.body;
+	const response = await db.query(
+		'INSERT INTO products (product_name,product_image,product_description, price) VALUES ($1, $2, $3, $4) RETURNING *',
+		[name, image, description, price],
+	);
+	const item = response.rows[0];
+	res.status(201).send(item);
+};
+
 router.get('/', listAllProducts);
 router.get('/:id', findProductById);
+router.post('/', addProduct);
 
 module.exports = router;
