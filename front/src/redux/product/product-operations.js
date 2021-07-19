@@ -34,4 +34,14 @@ const addProduct = newProduct => async dispatch => {
 	}
 };
 
-export default { fetchProducts, fetchProductsById, addProduct };
+const removeProduct = contactId => async dispatch => {
+	dispatch(actions.removeProductRequest());
+	try {
+		axios.delete(`/api/${contactId}`);
+		dispatch(actions.removeProductSuccess(contactId));
+	} catch (error) {
+		dispatch(actions.removeProductError(error));
+	}
+};
+
+export default { fetchProducts, fetchProductsById, addProduct, removeProduct };

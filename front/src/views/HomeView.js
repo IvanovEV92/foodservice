@@ -13,17 +13,19 @@ export default function HomeView() {
 
 	const products = useSelector(productSelectors.getProducts);
 	const changeProductId = useSelector(productSelectors.getChangeProductId);
-
 	const isModalShow = useSelector(productSelectors.getShowModal);
 
+	const [productImage, setProductImage] = useState('');
 	const [productName, setProductName] = useState('');
+	const [productDescription, setProductDescription] = useState('');
+	const [productPrice, setProductPrice] = useState('');
 
 	const toggleModal = useCallback(() => {
 		dispatch(productActions.showFormModal());
 	}, [dispatch]);
 
-	const handleNameChange = useCallback(event => {
-		const { name, value } = event.currentTarget;
+	const handleNameChange = event => {
+		const { name, value } = event.target;
 		switch (name) {
 			case 'name':
 				return setProductName(value);
@@ -31,11 +33,21 @@ export default function HomeView() {
 			default:
 				return null;
 		}
-	}, []);
-
+	};
 	const editProduct = useCallback(
+		item => {
+			setProductImage(item.product_image);
+			setProductName(item.product_name);
+			setProductDescription(item.product_description);
+			setProductPrice(item.price);
+			dispatch(productOperations.fetchProductsById(item.id));
+		},
+		[dispatch],
+	);
+
+	const removeProduct = useCallback(
 		id => {
-			dispatch(productOperations.fetchProductsById(id));
+			dispatch(productOperations.removeProduct(id));
 		},
 		[dispatch],
 	);
@@ -64,21 +76,49 @@ export default function HomeView() {
 						{changeProductId === item.id && (
 							<input
 								type="text"
+								name="image"
+								value={productImage}
+								placeholder="Image(insert link)"
+								onChange={handleNameChange}
+							/>
+						)}
+						<p>{item.product_name}</p>
+						{changeProductId === item.id && (
+							<input
+								type="text"
 								name="name"
 								value={productName}
 								placeholder="Введите имя"
 								onChange={handleNameChange}
 							/>
 						)}
-
-						<p>{item.product_name}</p>
+						<p>{item.product_description}</p>
+						{changeProductId === item.id && (
+							<textarea
+								type="text"
+								name="description"
+								value={productDescription}
+								placeholder="Description"
+								onChange={handleNameChange}
+							/>
+						)}
+						<p>{item.price}</p>
+						{changeProductId === item.id && (
+							<input
+								type="text"
+								name="price"
+								value={productPrice}
+								placeholder="Price"
+								onChange={handleNameChange}
+							/>
+						)}
 						{changeProductId === item.id ? (
 							<div>
 								<button onClick={() => null}>Update</button>
-								<button onClick={() => null}>Delete</button>
+								<button onClick={() => removeProduct(item.id)}>Delete</button>
 							</div>
 						) : (
-							<button onClick={() => editProduct(item.id)}>Edit</button>
+							<button onClick={() => editProduct(item)}>Edit</button>
 						)}
 					</li>
 				))}

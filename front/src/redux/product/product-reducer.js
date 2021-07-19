@@ -8,6 +8,8 @@ const items = createReducer([], {
 		...state,
 		payload,
 	],
+	[productActions.removeProductSuccess]: (state, { _, payload }) =>
+		state.filter(({ id }) => id !== payload),
 });
 
 const changeProduct = createReducer(
