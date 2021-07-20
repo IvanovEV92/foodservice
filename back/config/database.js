@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
 const { Pool } = require('pg');
 const dotenv = require('dotenv');
 

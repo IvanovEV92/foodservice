@@ -1,11 +1,11 @@
 import React, { useState, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import { productActions, productOperations } from '../../redux/product/';
+import { productActions, productOperations } from '../../redux/product';
 
 export default function Form(title = '') {
 	const dispatch = useDispatch();
 	const [name, setName] = useState('');
-	const [price, setPrice] = useState('');
+	const [price, setPrice] = useState(0);
 	const [description, setDescription] = useState('');
 	const [image, setImage] = useState('');
 
@@ -37,7 +37,7 @@ export default function Form(title = '') {
 			resetForm();
 			dispatch(productActions.closeFormModal());
 		},
-		[dispatch, name, price],
+		[dispatch, name, image, description, price],
 	);
 
 	const toggleModal = useCallback(() => {
@@ -46,7 +46,7 @@ export default function Form(title = '') {
 
 	function resetForm() {
 		setName('');
-		setPrice('');
+		setPrice(0);
 		setDescription('');
 		setImage('');
 	}
@@ -76,7 +76,8 @@ export default function Form(title = '') {
 				onChange={handleNameChange}
 			/>
 			<input
-				type="text"
+				type="number"
+				min="0"
 				name="price"
 				value={price}
 				placeholder="Price"

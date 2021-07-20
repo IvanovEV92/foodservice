@@ -14,11 +14,17 @@ const addProductRequest = createAction('products/addProductRequest');
 const addProductSuccess = createAction('products/addProductSuccess');
 const addProductError = createAction('products/addProductError');
 
+const updateProductRequest = createAction('products/updateProductRequest');
+const updateProductSuccess = createAction('products/updateProductSuccess');
+const updateProductError = createAction('products/updateProductError');
+
 const removeProductRequest = createAction('products/removeProductRequest');
 const removeProductSuccess = createAction('products/removeProductSuccess');
 const removeProductError = createAction('products/removeProductError');
 
-export default {
+const closeEditForm = createAction('products/closeEditForm');
+
+const productActions = {
 	fetchProductsRequest,
 	fetchProductsSuccess,
 	fetchProductsError,
@@ -30,7 +36,12 @@ export default {
 	addProductRequest,
 	addProductSuccess,
 	addProductError,
+	updateProductRequest,
+	updateProductSuccess,
+	updateProductError,
 	removeProductRequest,
 	removeProductSuccess,
 	removeProductError,
+	closeEditForm,
 };
+export default productActions;

@@ -1,4 +1,4 @@
-import React, { useEffect, Suspense, lazy } from 'react';
+import React, { Suspense } from 'react';
 
 import HomeView from './views/HomeView';
 

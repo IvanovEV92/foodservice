@@ -1,7 +1,7 @@
 import { createPortal } from 'react-dom';
 import './Modal.css';
 import { useEffect, useCallback } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import { productActions } from '../../redux/product/';
 
@@ -22,7 +22,7 @@ export default function Modal(props) {
 		return () => {
 			window.removeEventListener('keydown', handleKeyDown);
 		};
-	}, []);
+	}, [dispatch]);
 
 	const handleBackdropClick = useCallback(
 		event => {
