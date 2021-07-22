@@ -1,9 +1,10 @@
 import { createPortal } from 'react-dom';
-import './Modal.css';
+
 import { useEffect, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { productActions } from '../../redux/product/';
+import styles from './Modal.module.scss';
 
 const modalRoot = document.querySelector('#modal-root');
 
@@ -34,8 +35,11 @@ export default function Modal(props) {
 	);
 
 	return createPortal(
-		<div className="Modal__backdrop" onClick={e => handleBackdropClick(e)}>
-			<div className="Modal__content">{props.children}</div>
+		<div
+			className={styles.Modal__backdrop}
+			onClick={e => handleBackdropClick(e)}
+		>
+			<div className={styles.Modal__content}>{props.children}</div>
 		</div>,
 		modalRoot,
 	);

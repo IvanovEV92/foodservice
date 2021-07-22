@@ -2,6 +2,8 @@ import React, { useState, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { productActions, productOperations } from '../../redux/product';
 
+import styles from './modalForm.module.scss';
+
 export default function Form(title = '') {
 	const dispatch = useDispatch();
 	const [name, setName] = useState('');
@@ -52,13 +54,14 @@ export default function Form(title = '') {
 	}
 
 	return (
-		<form onSubmit={handleSubmit}>
-			<h1>Add new dish</h1>
+		<form onSubmit={handleSubmit} className={styles.form}>
+			<h1 className={styles.form__title}>Add new dish</h1>
 			<input
 				type="text"
 				name="image"
 				value={image}
 				placeholder="Image(insert link)"
+				className={styles.input}
 				onChange={handleNameChange}
 			/>
 			<input
@@ -66,6 +69,7 @@ export default function Form(title = '') {
 				name="name"
 				value={name}
 				placeholder="Name"
+				className={styles.input}
 				onChange={handleNameChange}
 			/>
 			<textarea
@@ -73,6 +77,7 @@ export default function Form(title = '') {
 				name="description"
 				value={description}
 				placeholder="Description"
+				className={styles.description}
 				onChange={handleNameChange}
 			/>
 			<input
@@ -81,12 +86,19 @@ export default function Form(title = '') {
 				name="price"
 				value={price}
 				placeholder="Price"
+				className={styles.input}
 				onChange={handleNameChange}
 			/>
-			<button onClick={() => toggleModal()} type="button">
+			<button type="submit" className={styles.button__add}>
+				Add
+			</button>
+			<button
+				onClick={() => toggleModal()}
+				type="button"
+				className={styles.button__close}
+			>
 				Close
 			</button>
-			<button type="submit">Add</button>
 		</form>
 	);
 }

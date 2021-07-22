@@ -6,6 +6,7 @@ import {
 	productSelectors,
 } from '../redux/product';
 
+import Header from '../component/Header';
 import Modal from '../component/Modal';
 import ModalForm from '../component/ModalForm/';
 import EditProductForm from '../component/EditProductForm/';
@@ -18,19 +19,13 @@ export default function HomeView() {
 	const changeProductId = useSelector(productSelectors.getChangeProductId);
 	const isModalShow = useSelector(productSelectors.getShowModal);
 
-	const toggleModal = useCallback(() => {
-		dispatch(productActions.showFormModal());
-	}, [dispatch]);
-
 	useEffect(() => {
 		dispatch(productOperations.fetchProducts());
 	}, [dispatch]);
 
 	return (
-		<>
-			<button type="button" onClick={() => toggleModal()}>
-				Add dish
-			</button>
+		<main>
+			<Header />
 			{isModalShow && (
 				<Modal>
 					<ModalForm />
@@ -48,6 +43,6 @@ export default function HomeView() {
 					</li>
 				))}
 			</ul>
-		</>
+		</main>
 	);
 }
