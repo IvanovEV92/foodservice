@@ -32,10 +32,10 @@
 	font-family: 'Montserrat', sans-serif;
 	font-size: 16px;
 	text-shadow: 1px 1px 0 #fff;
-	color: #469ee2;
+	color: #bd2e0a;
 	letter-spacing: -0.2px;
 
-	transition: all 0.2s ease-in-out;
+	transition: 0.5s ease-in-out;
 
 	&:focus {
 		box-shadow: inset 5px 5px 2px #babecc, inset -1px -1px 2px #fff;
@@ -84,7 +84,7 @@
 	border: none;
 	box-shadow: -4px -4px 15px rgb(254, 254, 255), 4px 4px 15px rgb(200, 200, 220);
 	border-radius: 10px;
-	transition: 0.6s ease-in-out;
+	transition: 0.5s ease-in-out;
 
 	&__update {
 		composes: button;

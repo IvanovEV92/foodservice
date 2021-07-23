@@ -1,10 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-	productActions,
-	productOperations,
-	productSelectors,
-} from '../redux/product';
+import { productOperations, productSelectors } from '../redux/product';
 
 import Header from '../component/Header';
 import Modal from '../component/Modal';
@@ -31,7 +27,9 @@ export default function HomeView() {
 					<ModalForm />
 				</Modal>
 			)}
-
+			{/* <Modal>
+				<ModalForm />
+			</Modal> */}
 			{isLoading ? <Loader /> : <ProductList />}
 		</main>
 	);

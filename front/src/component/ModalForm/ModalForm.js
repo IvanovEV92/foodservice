@@ -4,13 +4,13 @@ import { productActions, productOperations } from '../../redux/product';
 
 import styles from './modalForm.module.scss';
 
-export default function Form(title = '') {
+export default function Form() {
 	const dispatch = useDispatch();
 	const [name, setName] = useState('');
 	const [price, setPrice] = useState(0);
 	const [description, setDescription] = useState('');
 	const [image, setImage] = useState('');
-
+	const isActive = !!name && !!description && !!image;
 	const handleNameChange = useCallback(event => {
 		const { name, value } = event.currentTarget;
 		switch (name) {
@@ -62,6 +62,7 @@ export default function Form(title = '') {
 				value={image}
 				placeholder="Image(insert link)"
 				className={styles.input}
+				required
 				onChange={handleNameChange}
 			/>
 			<input
@@ -70,6 +71,7 @@ export default function Form(title = '') {
 				value={name}
 				placeholder="Name"
 				className={styles.input}
+				required
 				onChange={handleNameChange}
 			/>
 			<textarea
@@ -78,6 +80,7 @@ export default function Form(title = '') {
 				value={description}
 				placeholder="Description"
 				className={styles.description}
+				required
 				onChange={handleNameChange}
 			/>
 			<input
@@ -87,10 +90,15 @@ export default function Form(title = '') {
 				value={price}
 				placeholder="Price"
 				className={styles.input}
+				required
 				onChange={handleNameChange}
 			/>
-			<button type="submit" className={styles.button__add}>
-				Add
+			<button
+				type="submit"
+				className={styles.button__add}
+				disabled={isActive ? false : true}
+			>
+				{isActive ? 'Add' : 'Enter fields'}
 			</button>
 			<button
 				onClick={() => toggleModal()}

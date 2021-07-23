@@ -23,10 +23,10 @@
 	font-family: 'Montserrat', sans-serif;
 	font-size: 16px;
 	text-shadow: 1px 1px 0 #fff;
-	color: #469ee2;
+	color: #bd2e0a;
 	letter-spacing: -0.2px;
 
-	transition: all 0.2s ease-in-out;
+	transition: 0.5s ease-in-out;
 
 	&:focus {
 		box-shadow: inset 5px 5px 2px #babecc, inset -1px -1px 2px #fff;
@@ -76,7 +76,7 @@
 	color: #61677c;
 	font-weight: bold;
 	box-shadow: -5px -5px 20px #fff, 5px 5px 20px #babecc;
-	transition: all 0.2s ease-in-out;
+	transition: 0.5s ease-in-out;
 	cursor: pointer;
 
 	&:hover {
@@ -90,7 +90,7 @@
 		composes: button;
 		margin-right: 20px;
 		&:hover {
-			background-color: #80beaf;
+			background-color: #76ca76;
 			color: #fff;
 			text-shadow: 1px 1px 0 black;
 		}
@@ -100,9 +100,16 @@
 		composes: button;
 
 		&:hover {
-			background-color: #cc4254;
+			background-color: #e97676;
 			color: #fff;
 			text-shadow: 1px 1px 0 black;
 		}
+	}
+	&:disabled,
+	&:disabled:hover {
+		background-color: #cccccc;
+		color: black;
+		box-shadow: none;
+		text-shadow: none;
 	}
 }

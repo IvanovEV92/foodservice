@@ -1,5 +1,6 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import { productReducer } from './product';
+import { reducer as formReducer } from 'redux-form';
 import {
 	FLUSH,
 	REHYDRATE,
@@ -21,6 +22,7 @@ const middleware = [
 
 const store = configureStore({
 	reducer: productReducer,
+	form: formReducer,
 	middleware,
 	devTools: process.env.NODE_ENV === 'development',
 });
