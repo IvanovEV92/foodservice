@@ -2,6 +2,12 @@ import { useState, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { productActions, productOperations } from '../../redux/product';
 
+import { ReactComponent as Update } from '../../icons/update.svg';
+import { ReactComponent as Delete } from '../../icons/delete.svg';
+import { ReactComponent as Close } from '../../icons/close.svg';
+
+import styles from './EditProductForm.module.scss';
+
 export default function EditProductForm(props) {
 	const {
 		item: { id, product_image, product_name, product_description, price },
@@ -61,40 +67,61 @@ export default function EditProductForm(props) {
 	}, [dispatch]);
 
 	return (
-		<form>
-			<input
-				type="text"
-				name="image"
-				value={productImage}
-				placeholder="Image(insert link)"
-				onChange={handleNameChange}
-			/>
-			<input
-				type="text"
-				name="name"
-				value={productName}
-				placeholder="Введите имя"
-				onChange={handleNameChange}
-			/>
-			<textarea
-				type="text"
-				name="description"
-				value={productDescription}
-				placeholder="Description"
-				onChange={handleNameChange}
-			/>
-			<input
-				type="number"
-				min="0"
-				name="price"
-				value={productPrice}
-				placeholder="Price"
-				onChange={handleNameChange}
-			/>
+		<form className={styles.form}>
 			<div>
-				<button onClick={() => updateProduct(id, newProduct)}>Update</button>
-				<button onClick={() => removeProduct(id)}>Delete</button>
-				<button onClick={() => closeEditForm()}>Close</button>
+				<input
+					type="text"
+					name="image"
+					value={productImage}
+					className={styles.input}
+					placeholder="Image(insert link)"
+					onChange={handleNameChange}
+				/>
+				<input
+					type="text"
+					name="name"
+					value={productName}
+					className={styles.input}
+					placeholder="Введите имя"
+					onChange={handleNameChange}
+				/>
+				<textarea
+					type="text"
+					name="description"
+					value={productDescription}
+					className={styles.description}
+					placeholder="Description"
+					onChange={handleNameChange}
+				/>
+				<input
+					type="number"
+					min="0"
+					name="price"
+					value={productPrice}
+					className={styles.input}
+					placeholder="Price"
+					onChange={handleNameChange}
+				/>
+			</div>
+			<div className={styles.form__buttons}>
+				<button
+					className={styles.button__update}
+					onClick={() => updateProduct(id, newProduct)}
+				>
+					<Update />
+				</button>
+				<button
+					className={styles.button__delete}
+					onClick={() => removeProduct(id)}
+				>
+					<Delete />
+				</button>
+				<button
+					className={styles.button__close}
+					onClick={() => closeEditForm()}
+				>
+					<Close />
+				</button>
 			</div>
 		</form>
 	);

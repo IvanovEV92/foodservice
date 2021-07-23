@@ -30,8 +30,14 @@ const showModal = createReducer(false, {
 	[productActions.closeFormModal]: () => false,
 });
 
+const loading = createReducer(false, {
+	[productActions.startLoading]: () => true,
+	[productActions.endLoading]: () => false,
+});
+
 export default combineReducers({
 	items,
 	changeProduct,
 	showModal,
+	loading,
 });

@@ -1,4 +1,4 @@
-import { useEffect, useCallback } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
 	productActions,
@@ -9,15 +9,15 @@ import {
 import Header from '../component/Header';
 import Modal from '../component/Modal';
 import ModalForm from '../component/ModalForm/';
-import EditProductForm from '../component/EditProductForm/';
-import ProductCard from '../component/ProductCard/';
+import ProductList from '../component/ProductList/';
+
+import Loader from '../component/Loader/';
 
 export default function HomeView() {
 	const dispatch = useDispatch();
 
-	const products = useSelector(productSelectors.getProducts);
-	const changeProductId = useSelector(productSelectors.getChangeProductId);
 	const isModalShow = useSelector(productSelectors.getShowModal);
+	const isLoading = useSelector(productSelectors.getLoading);
 
 	useEffect(() => {
 		dispatch(productOperations.fetchProducts());
@@ -31,18 +31,8 @@ export default function HomeView() {
 					<ModalForm />
 				</Modal>
 			)}
-			<ul>
-				{products.map(item => (
-					<li key={item.id}>
-						<img src={item.product_image} width="200" alt={item.product_name} />
-						{changeProductId === item.id ? (
-							<EditProductForm item={item} />
-						) : (
-							<ProductCard item={item} />
-						)}
-					</li>
-				))}
-			</ul>
+
+			{isLoading ? <Loader /> : <ProductList />}
 		</main>
 	);
 }

@@ -1,5 +1,9 @@
 .form {
-	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: 20px;
+	height: calc(100% - 260px);
 
 	&__title {
 		margin-bottom: 20px;
@@ -8,6 +12,11 @@
 		text-shadow: 1px 1px 1px #fff;
 		letter-spacing: -0.2px;
 		font-size: 30px;
+	}
+	&__buttons {
+		display: flex;
+		justify-content: space-between;
+		text-align: center;
 	}
 }
 
@@ -64,35 +73,39 @@
 }
 
 .button {
-	width: 150px;
-	border: 0;
-	outline: 0;
-	font-size: 16px;
-	border-radius: 320px;
-	padding: 16px;
-	background-color: #ebecf0;
-	text-shadow: 1px 1px 0 #fff;
-	cursor: pointer;
-	color: #61677c;
-	font-weight: bold;
-	box-shadow: -5px -5px 20px #fff, 5px 5px 20px #babecc;
-	transition: all 0.2s ease-in-out;
-	cursor: pointer;
+	background: rgb(240, 240, 245);
+	margin-top: 20px;
+	text-align: center;
+	width: 60px;
+	height: 60px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: none;
+	box-shadow: -4px -4px 15px rgb(254, 254, 255), 4px 4px 15px rgb(200, 200, 220);
+	border-radius: 10px;
+	transition: 0.6s ease-in-out;
 
-	&:hover {
-		box-shadow: -2px -2px 5px #fff, 2px 2px 5px #babecc;
-	}
-
-	&:active {
-		box-shadow: inset 1px 1px 2px #babecc, inset -1px -1px 2px #fff;
-	}
-	&__add {
+	&__update {
 		composes: button;
-		margin-right: 20px;
+
 		&:hover {
-			background-color: #80beaf;
-			color: #fff;
-			text-shadow: 1px 1px 0 black;
+			cursor: pointer;
+			box-shadow: -2px -2px 5px #fff, 2px 2px 5px #babecc;
+			border-radius: 50px;
+			background-color: #76ca76;
+			fill: #fff;
+		}
+	}
+
+	&__delete {
+		composes: button;
+		&:hover {
+			cursor: pointer;
+			box-shadow: -2px -2px 5px #fff, 2px 2px 5px #babecc;
+			border-radius: 50px;
+			background-color: #292c29;
+			fill: #fff;
 		}
 	}
 
@@ -100,9 +113,15 @@
 		composes: button;
 
 		&:hover {
-			background-color: #cc4254;
-			color: #fff;
-			text-shadow: 1px 1px 0 black;
+			cursor: pointer;
+			box-shadow: -2px -2px 5px #fff, 2px 2px 5px #babecc;
+			border-radius: 50px;
+			background-color: #e97676;
+			fill: #fff;
 		}
+	}
+
+	&:active {
+		box-shadow: -2px -2px 5px #fff, 2px 2px 5px #babecc;
 	}
 }

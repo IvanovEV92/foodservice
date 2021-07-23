@@ -24,6 +24,9 @@ const removeProductError = createAction('products/removeProductError');
 
 const closeEditForm = createAction('products/closeEditForm');
 
+const startLoading = createAction('products/startLoading');
+const endLoading = createAction('products/endLoading');
+
 const productActions = {
 	fetchProductsRequest,
 	fetchProductsSuccess,
@@ -43,5 +46,7 @@ const productActions = {
 	removeProductSuccess,
 	removeProductError,
 	closeEditForm,
+	startLoading,
+	endLoading,
 };
 export default productActions;

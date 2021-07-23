@@ -1,0 +1,42 @@
+.card {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: 20px;
+	height: calc(100% - 260px);
+
+	font-family: 'Montserrat', sans-serif;
+
+	&__name {
+		font-size: 20px;
+		font-weight: bold;
+		color: #777;
+		margin-bottom: 10px;
+	}
+	&__description {
+		margin-top: 20px;
+		text-align: justify;
+	}
+}
+
+.card__button {
+	background: rgb(240, 240, 245);
+	margin-top: 20px;
+	text-align: center;
+	width: 60px;
+	height: 60px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: none;
+	box-shadow: -4px -4px 15px rgb(254, 254, 255), 4px 4px 15px rgb(200, 200, 220);
+	border-radius: 10px;
+	transition: 0.6s ease-in-out;
+
+	&:hover {
+		cursor: pointer;
+		box-shadow: -2px -2px 5px #fff, 2px 2px 5px #babecc;
+		border-radius: 50px;
+		fill: #e99e6f;
+	}
+}
