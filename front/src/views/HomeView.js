@@ -27,9 +27,6 @@ export default function HomeView() {
 					<ModalForm />
 				</Modal>
 			)}
-			{/* <Modal>
-				<ModalForm />
-			</Modal> */}
 			{isLoading ? <Loader /> : <ProductList />}
 		</main>
 	);

@@ -6,13 +6,10 @@
 	"scripts": {
 		"dev": "concurrently \"cd back && npm run dev\" \"cd front && npm start\" "
 	},
-	"author": "Evhenii <ivanov191192@gmail.com>",
+	"author": "Yevhenii <ivanov191192@gmail.com>",
 	"license": "ISC",
 	"dependencies": {
 		"concurrently": "^6.2.0",
-		"knex": "^0.95.7",
-		"read-more-react": "^1.0.10",
-		"redux-form": "^8.3.7",
 		"sass": "^1.35.2"
 	}
 }

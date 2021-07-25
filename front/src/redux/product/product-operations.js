@@ -3,6 +3,7 @@ import actions from './product-action';
 
 axios.defaults.baseURL = 'https://iev-foodservice.herokuapp.com/products';
 // axios.defaults.baseURL = 'http://localhost:3333/products';
+
 const fetchProducts = () => async dispatch => {
 	dispatch(actions.fetchProductsRequest());
 	dispatch(actions.startLoading());

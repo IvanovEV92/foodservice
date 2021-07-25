@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { productActions, productOperations } from '../../redux/product';
 
@@ -10,7 +10,9 @@ export default function Form() {
 	const [price, setPrice] = useState(0);
 	const [description, setDescription] = useState('');
 	const [image, setImage] = useState('');
+
 	const isActive = !!name && !!description && !!image;
+
 	const handleNameChange = useCallback(event => {
 		const { name, value } = event.currentTarget;
 		switch (name) {
